@@ -9,63 +9,62 @@ function App() {
       id: 1,
       title: "Ноутбук",
       price: 50000,
-      image: "https://via.placeholder.com/300x200", // Замените на свои изображения
+      image: require("./images/1.jpg"),
     },
     {
       id: 2,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/2.jpg"),
     },
     {
       id: 3,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/3.jpg"),
     },
     {
       id: 4,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/4.jpg"),
     },
     {
       id: 5,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/5.jpg"),
     },
     {
       id: 6,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/6.jpg"),
     },
     {
       id: 7,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/1.jpg"),
     },
     {
       id: 8,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/4.jpg"),
     },
     {
       id: 9,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/5.jpg"),
     },
     {
       id: 10,
       title: "Смартфон",
       price: 25000,
-      image: "https://via.placeholder.com/300x200",
+      image: require("./images/6.jpg"),
     },
-    // Добавьте больше товаров...
   ];
 
   return (
