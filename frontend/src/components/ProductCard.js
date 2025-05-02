@@ -9,7 +9,9 @@ const ProductCard = ({ title, price, image }) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{price} руб.</Card.Text>
-        <Button variant="primary">В корзину</Button>
+        <Button variant="primary" onClick={() => onAddToCart(product)}>
+         В корзину
+        </Button>
       </Card.Body>
     </Card>
   );
