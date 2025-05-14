@@ -1,29 +1,26 @@
 // components/ProductCard.tsx
-import { Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
+import { useCart } from '../context/CartContext';
 
 export default function ProductCard({ product }: { product: any }) {
+  const { addToCart } = useCart();
+  
   return (
-    <Card sx={{ maxWidth: 345, m: 2 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={product.image}
-        alt={product.name}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {product.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {product.description}
-        </Typography>
-        <Typography variant="h6" sx={{ mt: 2 }}>
-          {product.price} руб.
-        </Typography>
-        <Button variant="contained" sx={{ mt: 2 }} fullWidth>
-          В корзину
-        </Button>
-      </CardContent>
+    <Card sx={{ 
+      maxWidth: 345,
+      m: 2,
+      transition: 'transform 0.2s',
+      '&:hover': { transform: 'scale(1.03)' }
+    }}>
+      <CardActionArea onClick={() => addToCart(product.id)}>
+        <CardMedia
+          component="img"
+          height="200"
+          image={product.image}
+          alt={product.name}
+          sx={{ objectFit: 'cover' }}
+        />
+        {/* ... остальной контент ... */}
+      </CardActionArea>
     </Card>
   );
 }
