@@ -2,17 +2,31 @@
   "products": [
     {
       "id": 1,
-      "name": "Ноутбук ASUS X515",
-      "price": 45999,
-      "description": "15.6'' FHD, Intel Core i3-1115G4, 8GB RAM, 512GB SSD",
-      "image": "https://via.placeholder.com/300x200?text=ASUS+X515"
+      "name": "Газонокосилка Bosch Rotak 34",
+      "price": 15990,
+      "category": "Садовый инвентарь",
+      "image": "https://m.media-amazon.com/images/I/61lKQaI4N-L._AC_SL1500_.jpg"
     },
     {
       "id": 2,
-      "name": "Смартфон Xiaomi Redmi Note 11",
-      "price": 19999,
-      "description": "6.43'' AMOLED, 128GB, 4GB RAM, 50MP камера",
-      "image": "https://via.placeholder.com/300x200?text=Xiaomi+Note+11"
+      "name": "Семена газонной травы",
+      "price": 890,
+      "category": "Семена",
+      "image": "https://avatars.mds.yandex.net/get-mpic/5253534/img_id4271064285650918324.jpeg/orig"
+    },
+    {
+      "id": 3,
+      "name": "Система автоматического полива",
+      "price": 23450,
+      "category": "Полив",
+      "image": "https://irr.ru/thumb/1500x0/filters:quality(75):no_upscale()/imgs/2023/02/03/10/5949095/1d5eac1e40d7c5d6d0a9d2a4b5c8d3b8.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Садовые ножницы Fiskars",
+      "price": 3450,
+      "category": "Инструменты",
+      "image": "https://m.media-amazon.com/images/I/71FQY9GqQjL._AC_SL1500_.jpg"
     }
   ]
 }
