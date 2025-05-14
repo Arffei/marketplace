@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, Box } from '@mui/material'; // Добавлен импорт Box
+import { ThemeProvider, Box } from '@mui/material';
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -9,7 +9,6 @@ import ProductPage from './pages/ProductPage';
 import Favorites from './pages/Favorites';
 import Orders from './pages/Orders';
 import Carousel from './components/Carousel';
-import products from './products.json';
 import { theme } from './theme';
 
 function App() {
@@ -23,7 +22,7 @@ function App() {
             margin: '0 auto',
             paddingTop: '20px'
           }}>
-            <Carousel items={products.products.slice(0, 3)} />
+            <Carousel />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />

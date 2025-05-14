@@ -1,12 +1,10 @@
 import { 
   AppBar, 
   Toolbar, 
-  Typography, 
   IconButton, 
   Badge, 
-  InputBase, 
-  Button,
-  Box
+  Box, 
+  Button 
 } from '@mui/material';
 import { 
   ShoppingCart, 
@@ -32,19 +30,16 @@ export default function Header() {
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Левая часть */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Typography 
-            variant="h4" 
-            sx={{ 
-              fontFamily: 'Roboto Condensed', 
-              fontWeight: 700,
-              color: '#1E3A5F'
+          <img 
+            src="/images/logs.png" 
+            alt="Логотип GAZON" 
+            style={{ 
+              height: '40px', 
+              width: 'auto',
+              objectFit: 'contain'
             }}
-          >
-            GAZON
-          </Typography>
-          
+          />
           <Button
             variant="contained"
             startIcon={<Menu />}
@@ -56,28 +51,23 @@ export default function Header() {
           >
             Каталог
           </Button>
-          
           <SearchBar />
         </Box>
 
-        {/* Правая часть */}
         <Box sx={{ display: 'flex', gap: 1 }}>
           <IconButton color="inherit" href="/favorites">
             <Badge badgeContent={0} color="error">
               <Favorite />
             </Badge>
           </IconButton>
-          
           <IconButton color="inherit" href="/orders">
             <Assignment />
           </IconButton>
-          
           <IconButton color="inherit" href="/cart">
             <Badge badgeContent={cartItems.length} color="error">
               <ShoppingCart />
             </Badge>
           </IconButton>
-          
           <IconButton color="inherit" href="/profile">
             <AccountCircle />
           </IconButton>
