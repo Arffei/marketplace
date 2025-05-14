@@ -1,4 +1,12 @@
-import { Card, CardContent, CardMedia, Typography, Button, CardActionArea } from '@mui/material';
+import { 
+  Card, 
+  CardContent, 
+  CardMedia, 
+  Typography, 
+  Button, 
+  CardActionArea,
+  Box
+} from '@mui/material';
 import { useCart } from '../context/CartContext';
 
 export default function ProductCard({ product }: { product: any }) {
@@ -9,6 +17,7 @@ export default function ProductCard({ product }: { product: any }) {
       maxWidth: 345,
       m: 2,
       transition: 'transform 0.2s',
+      borderRadius: '15px',
       '&:hover': { 
         transform: 'scale(1.03)',
         boxShadow: 4
@@ -20,7 +29,11 @@ export default function ProductCard({ product }: { product: any }) {
           height="200"
           image={product.image}
           alt={product.name}
-          sx={{ objectFit: 'cover' }}
+          sx={{ 
+            objectFit: 'cover',
+            borderTopLeftRadius: '15px',
+            borderTopRightRadius: '15px'
+          }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -29,20 +42,25 @@ export default function ProductCard({ product }: { product: any }) {
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
             {product.category}
           </Typography>
-          <Typography variant="h6" color="primary">
-            {product.price.toLocaleString()} руб.
-          </Typography>
-          <Button 
-            variant="contained" 
-            color="secondary" 
-            sx={{ mt: 2, width: '100%' }}
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product.id);
-            }}
-          >
-            В корзину
-          </Button>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant="h6" color="primary">
+              {product.price.toLocaleString()} руб.
+            </Typography>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              sx={{ 
+                borderRadius: '20px',
+                padding: '8px 20px'
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                addToCart(product.id);
+              }}
+            >
+              Купить
+            </Button>
+          </Box>
         </CardContent>
       </CardActionArea>
     </Card>
