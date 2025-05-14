@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
@@ -7,83 +7,89 @@ export default function Carousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const items = Array.from({ length: 7 }, (_, i) => i + 1);
 
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % items.length);
-    }, 5000);
+    const interval = setInterval(handleNext, 3000);
     return () => clearInterval(interval);
-  }, [items.length]);
+  }, []);
 
   return (
-    <Box sx={{ 
-      position: 'relative', 
-      height: 400, 
-      overflow: 'hidden',
-      borderRadius: '16px',
-      margin: '20px 0',
-      boxShadow: 3
+    <Box sx={{
+      maxWidth: '1200px',
+      margin: '20px auto',
+      position: 'relative',
+      padding: '0 40px'
     }}>
-      {items.map((num, index) => (
-        <Box
-          key={num}
-          sx={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            opacity: index === activeIndex ? 1 : 0,
-            transition: 'opacity 0.5s',
-          }}
-        >
-          <img 
-            src={`/images/imgs${num}.jpg`} 
-            alt={`Товар ${num}`} 
-            style={{ 
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
-          />
-          <Typography
-            variant="h6"
+      <Box sx={{
+        display: 'flex',
+        overflowX: 'hidden',
+        gap: '20px',
+        scrollBehavior: 'smooth',
+        padding: '10px 0'
+      }}>
+        {items.map((num, index) => (
+          <Box
+            key={num}
             sx={{
-              position: 'absolute',
-              bottom: '20px',
-              left: '20px',
-              color: 'white',
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              padding: '8px 16px',
-              borderRadius: '8px'
+              flex: '0 0 300px',
+              height: '300px',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              opacity: Math.abs(index - activeIndex) > 1 ? 0.5 : 1,
+              transition: 'opacity 0.3s, transform 0.3s',
+              transform: `translateX(-${activeIndex * 320}px)`
             }}
           >
-            Товар #{num}
-          </Typography>
-        </Box>
-      ))}
-      
+            <img
+              src={`/images/imgs${num}.jpg`}
+              alt={`Товар ${num}`}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
+          </Box>
+        ))}
+      </Box>
+
       <IconButton
-        sx={{ 
-          position: 'absolute', 
-          left: 20, 
+        onClick={handlePrev}
+        sx={{
+          position: 'absolute',
+          left: 0,
           top: '50%',
-          backgroundColor: 'rgba(255,255,255,0.2)',
-          '&:hover': { backgroundColor: 'rgba(255,255,255,0.3)' }
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          '&:hover': {
+            backgroundColor: 'rgba(255,255,255,1)'
+          }
         }}
-        onClick={() => setActiveIndex(prev => (prev - 1 + items.length) % items.length)}
       >
-        <NavigateBeforeIcon fontSize="large" sx={{ color: 'white' }} />
+        <NavigateBeforeIcon fontSize="large" />
       </IconButton>
-      
+
       <IconButton
-        sx={{ 
-          position: 'absolute', 
-          right: 20, 
+        onClick={handleNext}
+        sx={{
+          position: 'absolute',
+          right: 0,
           top: '50%',
-          backgroundColor: 'rgba(255,255,255,0.2)',
-          '&:hover': { backgroundColor: 'rgba(255,255,255,0.3)' }
+          transform: 'translateY(-50%)',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          '&:hover': {
+            backgroundColor: 'rgba(255,255,255,1)'
+          }
         }}
-        onClick={() => setActiveIndex(prev => (prev + 1) % items.length)}
       >
-        <NavigateNextIcon fontSize="large" sx={{ color: 'white' }} />
+        <NavigateNextIcon fontSize="large" />
       </IconButton>
     </Box>
   );

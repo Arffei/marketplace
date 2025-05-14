@@ -16,13 +16,19 @@ function App() {
     <ThemeProvider theme={theme}>
       <CartProvider>
         <BrowserRouter>
+          {/* Шапка сайта */}
           <Header />
+
+          {/* Основной контент */}
           <Box sx={{ 
             width: '85%',
             margin: '0 auto',
             paddingTop: '20px'
           }}>
+            {/* Карусель товаров */}
             <Carousel />
+
+            {/* Маршрутизация */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/cart" element={<Cart />} />
