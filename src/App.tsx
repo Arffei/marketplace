@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import ProductPage from './pages/ProductPage';
-import Favorites from './pages/Favorites'; // Добавлен импорт
-import Orders from './pages/Orders'; // Добавлен импорт
+import Favorites from './pages/Favorites';
+import Orders from './pages/Orders';
 import Carousel from './components/Carousel';
 import products from './products.json';
 import { theme } from './theme';
@@ -18,15 +18,21 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <Header />
-          <Carousel items={products.products.slice(0, 3)} />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/product/:id" element={<ProductPage />} />
-          </Routes>
+          <Box sx={{ 
+            width: '85%',
+            margin: '0 auto',
+            paddingTop: '20px'
+          }}>
+            <Carousel items={products.products.slice(0, 3)} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/product/:id" element={<ProductPage />} />
+            </Routes>
+          </Box>
         </BrowserRouter>
       </CartProvider>
     </ThemeProvider>
