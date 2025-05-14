@@ -1,16 +1,27 @@
-// theme.ts
 import { createTheme } from '@mui/material';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#2e7d32',
+      main: '#1E3A5F',
     },
     secondary: {
-      main: '#ffab00',
+      main: '#87CEEB',
     },
   },
   typography: {
     fontFamily: 'Roboto, Arial',
+    h4: {
+      fontWeight: 700,
+    }
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        }
+      }
+    }
+  }
 });
