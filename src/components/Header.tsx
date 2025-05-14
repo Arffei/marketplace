@@ -34,14 +34,18 @@ export default function Header() {
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <Link to="/">
-            <img 
-              src="/images/logs.png" 
-              alt="Логотип GAZON" 
-              style={{ 
-                height: '40px', 
+            <Box
+              component="img"
+              src="/images/logs.png"
+              alt="Логотип GAZON"
+              sx={{
+                height: '40px',
                 width: 'auto',
                 transition: 'transform 0.2s',
-                ':hover': { transform: 'scale(1.05)' }
+                '&:hover': { 
+                  transform: 'scale(1.05)',
+                  cursor: 'pointer'
+                }
               }}
             />
           </Link>
