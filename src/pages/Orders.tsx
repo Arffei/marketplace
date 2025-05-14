@@ -1,12 +1,12 @@
-import { Container, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
-export default function Orders() {
+const Orders = () => {
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Мои заказы
-      </Typography>
-      {/* Добавьте логику отображения заказов */}
-    </Container>
+    <div>
+      <Typography variant="h4">Мои заказы</Typography>
+      {/* Добавьте содержимое страницы */}
+    </div>
   );
-}
+};
+
+export default Orders; // Обязательный экспорт

@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
 import ProductPage from './pages/ProductPage';
-import Favorites from './pages/Favorites';
-import Orders from './pages/Orders';
+import Favorites from './pages/Favorites'; // Добавлен импорт
+import Orders from './pages/Orders'; // Добавлен импорт
 import Carousel from './components/Carousel';
 import products from './products.json';
 import { theme } from './theme';
