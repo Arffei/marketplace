@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider, Box } from '@mui/material'; // Добавлен импорт Box
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Home from './pages/Home';

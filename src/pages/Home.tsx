@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from '@mui/material';
-import ProductCard from '../components/ProductCard';
-import SaleItem from '../components/SaleItem';
-import products from '../products.json';
+import WideProductCard from '../components/WideProductCard';
+import BannerProductCard from '../components/BannerProductCard';
+import SaleItem from '../components/SaleItem'; // Путь зависит от структуры вашего проекта
 
 export default function Home() {
   return (
@@ -38,18 +38,32 @@ export default function Home() {
         backgroundPosition: 'center'
       }}/>
 
-      {/* Основные товары */}
-      <Typography variant="h5">Популярные товары</Typography>
-      <Box sx={{ 
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        gap: 3,
-        mt: 2
-      }}>
-        {products.products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+      {/* Новый блок с 3 широкими карточками */}
+      <Box sx={{ mt: 6, mb: 8 }}>
+        <Typography variant="h5" gutterBottom>Лучшие предложения</Typography>
+        <Box sx={{
+          display: 'grid',
+          gap: 3,
+          gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }
+        }}>
+          {[1, 2, 3].map((num) => (
+            <WideProductCard key={num} image={`/images/img${num}.jpg`} />
+          ))}
+        </Box>
+      </Box>
+
+      {/* Новый блок с 4 баннерами */}
+      <Box sx={{ mt: 6 }}>
+        <Typography variant="h5" gutterBottom>Рекомендуем для вас</Typography>
+        <Box sx={{
+          display: 'grid',
+          gap: 3,
+          gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }
+        }}>
+          {[1, 2, 3, 4].map((num) => (
+            <BannerProductCard key={num} image={`/images/imgbanner${num}.jpg`} />
+          ))}
+        </Box>
       </Box>
     </Container>
   );
