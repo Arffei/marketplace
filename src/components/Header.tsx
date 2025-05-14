@@ -1,33 +1,87 @@
-import { AppBar, Toolbar, Typography, IconButton, Badge } from '@mui/material';
-import { ShoppingCart, AccountCircle } from '@mui/icons-material';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  IconButton, 
+  Badge, 
+  InputBase, 
+  Button,
+  Box
+} from '@mui/material';
+import { 
+  ShoppingCart, 
+  AccountCircle, 
+  Favorite, 
+  Assignment, 
+  Menu 
+} from '@mui/icons-material';
 import { useCart } from '../context/CartContext';
+import SearchBar from './SearchBar';
 
 export default function Header() {
   const { cartItems } = useCart();
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: '#2e7d32' }}>
-      <Toolbar>
-        <Typography 
-          variant="h4" 
-          sx={{ 
-            flexGrow: 1, 
-            fontFamily: 'Roboto Condensed', 
-            fontWeight: 700 
-          }}
-        >
-          GAZON
-        </Typography>
-        
-        <IconButton color="inherit" href="/cart">
-          <Badge badgeContent={cartItems.length} color="error">
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
-        
-        <IconButton color="inherit" href="/profile">
-          <AccountCircle />
-        </IconButton>
+    <AppBar 
+      position="sticky" 
+      sx={{ 
+        backgroundColor: '#87CEEB',
+        borderRadius: '15px',
+        margin: '15px 15%',
+        width: '70%'
+      }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        {/* Левая часть */}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Typography 
+            variant="h4" 
+            sx={{ 
+              fontFamily: 'Roboto Condensed', 
+              fontWeight: 700,
+              color: '#1E3A5F'
+            }}
+          >
+            GAZON
+          </Typography>
+          
+          <Button
+            variant="contained"
+            startIcon={<Menu />}
+            sx={{ 
+              borderRadius: '20px',
+              backgroundColor: '#1E3A5F',
+              '&:hover': { backgroundColor: '#2A4A6E' }
+            }}
+          >
+            Каталог
+          </Button>
+          
+          <SearchBar />
+        </Box>
+
+        {/* Правая часть */}
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <IconButton color="inherit" href="/favorites">
+            <Badge badgeContent={0} color="error">
+              <Favorite />
+            </Badge>
+          </IconButton>
+          
+          <IconButton color="inherit" href="/orders">
+            <Assignment />
+          </IconButton>
+          
+          <IconButton color="inherit" href="/cart">
+            <Badge badgeContent={cartItems.length} color="error">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
+          
+          <IconButton color="inherit" href="/profile">
+            <AccountCircle />
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBar>
   );

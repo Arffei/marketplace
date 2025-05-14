@@ -1,22 +1,30 @@
-// components/SearchBar.tsx
-import { TextField, InputAdornment } from '@mui/material';
+import { 
+  InputBase, 
+  IconButton, 
+  Paper 
+} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function SearchBar({ onSearch }: { onSearch: (query: string) => void }) {
+export default function SearchBar() {
   return (
-    <TextField
-      fullWidth
-      variant="outlined"
-      placeholder="Поиск товаров..."
-      onChange={(e) => onSearch(e.target.value)}
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        ),
+    <Paper
+      component="form"
+      sx={{ 
+        p: '2px 4px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        width: 400,
+        borderRadius: '20px'
       }}
-      sx={{ mb: 4 }}
-    />
+    >
+      <InputBase
+        sx={{ ml: 1, flex: 1 }}
+        placeholder="Поиск товаров..."
+        inputProps={{ 'aria-label': 'search products' }}
+      />
+      <IconButton type="button" sx={{ p: '10px' }}>
+        <SearchIcon />
+      </IconButton>
+    </Paper>
   );
 }
