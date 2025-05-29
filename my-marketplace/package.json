@@ -12,8 +12,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.126",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.9.0",
     "lodash": "^4.17.21",
@@ -52,6 +50,8 @@
     "@babel/core": "^7.27.3",
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-typescript": "^7.27.1",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5",
     "babel-loader": "^10.0.0"
   }
 }

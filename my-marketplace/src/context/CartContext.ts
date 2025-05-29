@@ -1,4 +1,5 @@
-import { createContext, useReducer, Dispatch } from 'react';
+// src/context/CartContext.ts
+import React from 'react';
 import { Product } from '../types/Product';
 
 type Action =
@@ -35,7 +36,7 @@ export const CartContext = createContext<[State, Dispatch<Action>]>([
   () => null,
 ]);
 
-export function CartProvider({ children }) {
+export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   return (
     <CartContext.Provider value={[state, dispatch]}>{children}</CartContext.Provider>
