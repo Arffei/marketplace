@@ -1,5 +1,5 @@
 import { createContext, useReducer, Dispatch } from 'react';
-import { Product } from '../types/product';
+import { Product } from '../types/Product';
 
 type Action =
   | { type: 'ADD_TO_CART'; payload: Product }
