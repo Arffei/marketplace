@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type FavoritesContextType = {
   favorites: number[];
@@ -8,16 +8,14 @@ type FavoritesContextType = {
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
 
-export const FavoritesProvider = ({ children }: { children: React.ReactNode }) => {
+export const FavoritesProvider = ({ children }: { children: ReactNode }) => {
   const [favorites, setFavorites] = useState<number[]>([]);
   
-  // Загрузка из localStorage
   useEffect(() => {
     const saved = localStorage.getItem('favorites');
     if (saved) setFavorites(JSON.parse(saved));
   }, []);
   
-  // Сохранение в localStorage
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);

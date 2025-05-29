@@ -1,10 +1,10 @@
-import { AppBar, Toolbar, Button, IconButton, InputBase, Badge } from '@mui/material';
-import { Home, Search, Favorite, ShoppingCart, Person, List } from '@mui/icons-material';
-import { useCart } from '../context/CartContext';
+import { AppBar, Toolbar, Button, IconButton, Box, Badge } from '@mui/material';
+import { Home, Favorite, Person, List } from '@mui/icons-material';
 import { useFavorites } from '../context/FavoritesContext';
+import SearchBar from './SearchBar';
+import CartBadge from './CartBadge';
 
 export default function Header() {
-  const { cart } = useCart();
   const { favorites } = useFavorites();
 
   return (
@@ -14,42 +14,53 @@ export default function Header() {
         borderRadius: '25px', 
         margin: '0 15%', 
         bgcolor: 'primary.main',
-        mt: 2
+        mt: 2,
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
       }}
     >
       <Toolbar>
-        <IconButton href="/" sx={{ mr: 2 }}>
+        <IconButton href="/" sx={{ mr: 2, color: 'white' }}>
           <Home fontSize="large" />
         </IconButton>
         
-        <Button color="inherit" href="/catalog">Каталог</Button>
+        <Button 
+          color="inherit" 
+          href="/catalog"
+          sx={{ fontWeight: 600 }}
+        >
+          Каталог
+        </Button>
         
-        <InputBase
-          placeholder="Поиск..."
-          startAdornment={<Search sx={{ mr: 1 }} />}
-          sx={{ 
-            bgcolor: 'white', 
-            borderRadius: '20px', 
-            px: 2, 
-            mx: 2, 
-            flexGrow: 1 
-          }}
-        />
+        <SearchBar />
         
-        <IconButton href="/profile"><Person /></IconButton>
-        <IconButton href="/orders"><List /></IconButton>
-        
-        <IconButton href="/favorites">
-          <Badge badgeContent={favorites.length} color="error">
-            <Favorite />
-          </Badge>
-        </IconButton>
-        
-        <IconButton href="/cart">
-          <Badge badgeContent={cart.length} color="error">
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <IconButton href="/profile" sx={{ color: 'white' }}>
+            <Person />
+          </IconButton>
+          
+          <IconButton href="/orders" sx={{ color: 'white' }}>
+            <List />
+          </IconButton>
+          
+          <IconButton href="/favorites" sx={{ color: 'white' }}>
+            <Badge 
+              badgeContent={favorites.length} 
+              color="error"
+              sx={{
+                '& .MuiBadge-badge': {
+                  right: -3,
+                  top: 5,
+                  border: '2px solid',
+                  borderColor: 'primary.main'
+                }
+              }}
+            >
+              <Favorite />
+            </Badge>
+          </IconButton>
+          
+          <CartBadge />
+        </Box>
       </Toolbar>
     </AppBar>
   );

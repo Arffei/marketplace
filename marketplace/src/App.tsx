@@ -9,7 +9,7 @@ import Orders from './pages/Orders';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
 
-function App() {
+export default function App() {
   return (
     <CartProvider>
       <FavoritesProvider>
