@@ -1,31 +1,37 @@
 // src/components/ReviewForm.tsx
-import * as Yup from 'yup';
-import { Formik, Field, Form } from 'formik';
-import { TextField, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, TextField, Button, Typography } from '@mui/material';
 
-const validationSchema = Yup.object().shape({
-  rating: Yup.number()
-    .min(1, 'Минимальное значение рейтинга — 1')
-    .max(5, 'Максимальное значение рейтинга — 5'),
-  comment: Yup.string().required('Обязательно напишите отзыв'),
-});
+const ReviewForm = () => {
+  const [review, setReview] = useState('');
 
-export default function ReviewForm() {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    // Отправка отзыва на сервер
+    console.log('Review submitted:', review);
+    setReview('');
+  };
+
   return (
-    <Formik
-      initialValues={{ rating: '', comment: '' }}
-      validationSchema={validationSchema}
-      onSubmit={(values) => console.log(values)}
-    >
-      {(props) => (
-        <Form>
-          <Field component={TextField} label="Рейтинг" name="rating" type="number" fullWidth margin="normal" />
-          <Field component={TextField} label="Ваш отзыв" name="comment" multiline rows={4} fullWidth margin="normal" />
-          <Button variant="contained" color="primary" type="submit">
-            Отправить отзыв
-          </Button>
-        </Form>
-      )}
-    </Formik>
+    <Box component="form" onSubmit={handleSubmit} sx={{ p: 6 }}>
+      <Typography variant="h5" component="h2">
+        Leave a Review
+      </Typography>
+      <TextField
+        id="review"
+        label="Review"
+        multiline
+        rows={4}
+        value={review}
+        onChange={(e) => setReview(e.target.value)}
+        fullWidth
+        margin="normal"
+      />
+      <Button type="submit" variant="contained" color="primary">
+        Submit Review
+      </Button>
+    </Box>
   );
-}
+};
+
+export default ReviewForm;
