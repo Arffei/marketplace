@@ -1,19 +1,22 @@
-// src/context/AuthContext.ts
-import React from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { User } from '../types/user';
 
+// Тип контекста аутентификации
 interface AuthContextType {
   user: User | null;
   login: (user: User) => void;
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+// Создание контекста аутентификации
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Провайдер контекста аутентификации
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    // Загрузка данных пользователя из localStorage при загрузке страницы
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -30,11 +33,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem('user');
   };
 
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  // Временно закомментируем этот код
+  // return (
+  //   <AuthContext.Provider value={{ user, login, logout }}>
+  //     {children}
+  //   </AuthContext.Provider>
+  // );
 };
 
+// Экспорт контекста для использования в компонентах
 export default AuthContext;
