@@ -1,4 +1,3 @@
-// src/context/CartContext.ts
 import { createContext, useReducer, Dispatch } from 'react';
 import { Product } from '../types/product';
 

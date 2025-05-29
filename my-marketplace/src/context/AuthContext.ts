@@ -1,4 +1,3 @@
-// src/context/AuthContext.ts
 import { createContext, useState, useEffect } from 'react';
 import { User } from '../types/user';
 
@@ -14,7 +13,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    // Загрузка данных пользователя из localStorage при загрузке страницы
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
