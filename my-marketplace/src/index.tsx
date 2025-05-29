@@ -10,19 +10,22 @@ import ProductDetails from './pages/ProductDetails';
 import Cart from './pages/Cart';
 import Favorite from './pages/Favorite';
 import Account from './pages/Account';
+import { CartProvider } from './context/CartContext';
 
 render(
   <ThemeProvider theme={theme}>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/favorites" element={<Favorite />} />
-        <Route path="/account" element={<Account />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favorites" element={<Favorite />} />
+          <Route path="/account" element={<Account />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   </ThemeProvider>,
   document.getElementById('root')
 );

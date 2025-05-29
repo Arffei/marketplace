@@ -1,44 +1,34 @@
-// src/context/CartContext.ts
-import { createContext, useReducer, Dispatch } from 'react';
-import { Product } from '../types/product';
+// src/pages/Cart.tsx
+import React, { useContext } from 'react';
+import { Box, Typography, List, ListItem, ListItemText, Button } from '@mui/material';
+import { CartContext } from '../context/CartContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-type Action =
-  | { type: 'ADD_TO_CART'; payload: Product }
-  | { type: 'REMOVE_FROM_CART'; payload: string };
+const Cart = () => {
+  const [cartState] = useContext(CartContext);
 
-interface State {
-  items: Record<string, number>; // id => quantity
-}
-
-const initialState: State = { items: {} };
-
-const cartReducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case 'ADD_TO_CART':
-      return {
-        ...state,
-        items: {
-          ...state.items,
-          [action.payload.id]: (state.items[action.payload.id] || 0) + 1,
-        },
-      };
-    case 'REMOVE_FROM_CART':
-      const newItems = { ...state.items };
-      delete newItems[action.payload];
-      return { ...state, items: newItems };
-    default:
-      throw new Error();
-  }
+  return (
+    <Box>
+      <Header />
+      <Box sx={{ p: 6 }}>
+        <Typography variant="h4" component="h1">
+          Cart
+        </Typography>
+        <List>
+          {Object.keys(cartState.items).map((id) => (
+            <ListItem key={id}>
+              <ListItemText primary={`Product ${id}`} secondary={`Quantity: ${cartState.items[id]}`} />
+            </ListItem>
+          ))}
+        </List>
+        <Button variant="contained" color="primary">
+          Checkout
+        </Button>
+      </Box>
+      <Footer />
+    </Box>
+  );
 };
 
-export const CartContext = createContext<[State, Dispatch<Action>]>([
-  initialState,
-  () => null,
-]);
-
-export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
-  return (
-    <CartContext.Provider value={[state, dispatch]}>{children}</CartContext.Provider>
-  );
-}
+export default Cart;
