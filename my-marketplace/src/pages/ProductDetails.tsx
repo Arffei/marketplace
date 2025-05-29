@@ -3,6 +3,7 @@ import React from 'react';
 import { Box, Typography, Card, CardMedia, CardContent, Button } from '@mui/material';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ReviewForm from '../components/ReviewForm';
 
 const ProductDetails = () => {
   return (
@@ -31,6 +32,7 @@ const ProductDetails = () => {
             Add to Cart
           </Button>
         </Card>
+        <ReviewForm />
       </Box>
       <Footer />
     </Box>
