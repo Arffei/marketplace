@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "title": "Товар №1",
+    "price": 1000,
+    "description": "Это первый товар в магазине.",
+    "category": "Категория А",
+    "imageUrl": "/images/product1.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Товар №2",
+    "price": 1500,
+    "description": "Это второй товар в магазине.",
+    "category": "Категория Б",
+    "imageUrl": "/images/product2.jpg"
+  }
+]
