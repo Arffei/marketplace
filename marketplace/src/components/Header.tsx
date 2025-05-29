@@ -1,14 +1,20 @@
-import { AppBar, Toolbar, Button, IconButton, InputBase } from '@mui/material';
+import { AppBar, Toolbar, Button, IconButton, InputBase, Badge } from '@mui/material';
 import { Home, Search, Favorite, ShoppingCart, Person, List } from '@mui/icons-material';
+import { useCart } from '../context/CartContext';
+import { useFavorites } from '../context/FavoritesContext';
 
 export default function Header() {
+  const { cart } = useCart();
+  const { favorites } = useFavorites();
+
   return (
     <AppBar 
       position="static" 
       sx={{ 
         borderRadius: '25px', 
         margin: '0 15%', 
-        bgcolor: 'primary.main' 
+        bgcolor: 'primary.main',
+        mt: 2
       }}
     >
       <Toolbar>
@@ -32,8 +38,18 @@ export default function Header() {
         
         <IconButton href="/profile"><Person /></IconButton>
         <IconButton href="/orders"><List /></IconButton>
-        <IconButton href="/favorites"><Favorite /></IconButton>
-        <IconButton href="/cart"><ShoppingCart /></IconButton>
+        
+        <IconButton href="/favorites">
+          <Badge badgeContent={favorites.length} color="error">
+            <Favorite />
+          </Badge>
+        </IconButton>
+        
+        <IconButton href="/cart">
+          <Badge badgeContent={cart.length} color="error">
+            <ShoppingCart />
+          </Badge>
+        </IconButton>
       </Toolbar>
     </AppBar>
   );
