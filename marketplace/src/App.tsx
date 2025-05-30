@@ -8,8 +8,9 @@ import Cart from './pages/Cart';
 import Orders from './pages/Orders';
 import { CartProvider } from './context/CartContext';
 import { FavoritesProvider } from './context/FavoritesContext';
+import React from 'react';
 
-export default function App() {
+function App() {
   return (
     <CartProvider>
       <FavoritesProvider>
@@ -28,3 +29,5 @@ export default function App() {
     </CartProvider>
   );
 }
+
+export default App;

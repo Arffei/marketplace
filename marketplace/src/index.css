@@ -5,9 +5,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Адаптивные стили */
+@media (max-width: 1200px) {
+  .MuiToolbar-root {
+    flex-direction: column;
+    padding: 16px !important;
+  }
+  
+  .MuiToolbar-root > * {
+    margin: 8px 0 !important;
+    width: 100%;
+  }
+  
+  .MuiAppBar-root {
+    width: 90% !important;
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .MuiAppBar-root {
+    width: 95% !important;
+    margin-left: 2.5% !important;
+    margin-right: 2.5% !important;
+  }
+  
+  .home-carousel {
+    width: 95% !important;
+    margin-left: 2.5% !important;
+    margin-right: 2.5% !important;
+  }
+  
+  .product-card {
+    max-width: 100% !important;
+    margin: 8px 0 !important;
+  }
 }
